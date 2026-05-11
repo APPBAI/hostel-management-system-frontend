@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
@@ -29,6 +30,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -45,7 +47,6 @@ const navMain = [
     title: "Dashboard",
     url: "/dashboard",
     icon: LayoutDashboard,
-    isActive: true,
   },
   {
     title: "Resident",
@@ -92,7 +93,7 @@ const navMain = [
 const navSecondary = [
   {
     title: "Settings",
-    url: "#",
+    url: "/dashboard/settings",
     icon: Settings,
   },
   {
@@ -108,100 +109,123 @@ const navSecondary = [
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname();
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
   return (
-    <Sidebar collapsible="icon" {...props} className="border-r border-gray-200">
-      <SidebarHeader className="h-16 flex items-center px-4">
+    <Sidebar collapsible="icon" {...props} className="border-r border-gray-100">
+      <SidebarHeader className={`h-16 flex items-center transition-all duration-200 ${isCollapsed ? "px-1" : "px-4"} mb-2`}>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" className="hover:bg-transparent px-0" nativeButton={false}>
-              <div className="flex aspect-square size-10 items-center justify-center rounded-lg overflow-hidden">
+              <div className={`flex aspect-square size-10 items-center justify-center rounded-xl overflow-hidden shrink-0 transition-all duration-200 ${
+                isCollapsed 
+                  ? "bg-transparent border-none shadow-none" 
+                  : "bg-white border border-gray-100 shadow-sm"
+              }`}>
                 <Image 
                   src="/Logo.svg" 
                   alt="APPBAI Logo" 
-                  width={32} 
-                  height={32} 
+                  width={isCollapsed ? 24 : 28} 
+                  height={isCollapsed ? 24 : 28} 
+                  className="transition-all duration-200"
                 />
               </div>
-              <div className="flex flex-col gap-0.5 leading-none ml-2">
-                <span className="font-bold text-gray-900 text-sm">APPBAI HMS Portal</span>
-                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-tight">Hostel Management</span>
-              </div>
+              {!isCollapsed && (
+                <div className="flex flex-col gap-0.5 leading-none ml-3 transition-opacity duration-200">
+                  <span className="font-extrabold text-gray-900 text-[13px] tracking-tight">APPBAI HMS Portal</span>
+                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">HOSTEL SYSTEM</span>
+                </div>
+              )}
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="px-2">
+      
+      <SidebarContent className={`transition-all duration-200 ${isCollapsed ? "px-1" : "px-3"}`}>
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {navMain.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    isActive={item.isActive}
-                    tooltip={item.title}
-                    render={<a href={item.url} />}
-                    nativeButton={false}
-                    className={`py-5 px-4 rounded-xl transition-all ${
-                      item.isActive 
-                        ? "bg-gray-100 text-gray-900 font-bold shadow-sm" 
-                        : "text-gray-400 hover:bg-gray-50 hover:text-gray-900"
-                    }`}
-                  >
-                    <item.icon className={`size-5 ${item.isActive ? "text-gray-900" : "text-gray-400"}`} />
-                    <span className="text-sm">{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+            <SidebarMenu className="gap-1">
+              {navMain.map((item) => {
+                const isActive = pathname === item.url || pathname?.startsWith(`${item.url}/`);
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      isActive={isActive}
+                      tooltip={item.title}
+                      render={<a href={item.url} />}
+                      nativeButton={false}
+                      className={`py-6 transition-all duration-200 ${isCollapsed ? "px-2" : "px-4"} rounded-xl ${
+                        isActive 
+                          ? "bg-gray-100 text-gray-900 font-bold" 
+                          : "text-gray-400 font-medium hover:bg-gray-50 hover:text-gray-900"
+                      }`}
+                    >
+                      <item.icon className={`size-5 shrink-0 ${isActive ? "text-gray-900" : "text-gray-400"}`} />
+                      {!isCollapsed && <span className="text-[13px] ml-1">{item.title}</span>}
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="border-t border-gray-100 p-2">
-        <SidebarMenu>
+      
+      <SidebarFooter className={`border-t border-gray-50 transition-all duration-200 ${isCollapsed ? "p-1" : "p-3"}`}>
+        <SidebarMenu className="gap-1">
           {navSecondary.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
                 size="sm"
+                tooltip={item.title}
                 render={<a href={item.url} />}
                 nativeButton={false}
-                className="text-gray-400 hover:text-gray-900 px-4 py-4"
+                className={`text-gray-400 hover:text-gray-900 py-5 font-bold transition-all duration-200 ${isCollapsed ? "px-2" : "px-4"}`}
               >
-                <item.icon className="size-4" />
-                <span className="text-xs font-bold">{item.title}</span>
+                <item.icon className="size-4 shrink-0" />
+                {!isCollapsed && <span className="text-[11px] uppercase tracking-wider ml-1">{item.title}</span>}
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
-          <SidebarMenuItem className="mt-2 pt-2 border-t border-gray-100">
+          
+          <SidebarMenuItem className={isCollapsed ? "" : "mt-2 pt-2"}>
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={
                   <SidebarMenuButton
                     size="lg"
-                    className="data-[state=open]:bg-gray-100 hover:bg-gray-50 transition-all rounded-xl py-6"
+                    tooltip="Emmanuel"
+                    className={`data-[state=open]:bg-gray-100 hover:bg-gray-50 transition-all rounded-xl py-7 ${isCollapsed ? "px-0 justify-center" : "px-3"}`}
                   />
                 }
               >
-                <Avatar className="h-8 w-8 rounded-lg">
+                <Avatar className="h-9 w-9 rounded-xl border border-gray-100 shrink-0">
                   <AvatarImage src="/images/avatar.png" alt="Emmanuel" />
-                  <AvatarFallback className="rounded-lg bg-gray-200 text-gray-600 font-bold">EM</AvatarFallback>
+                  <AvatarFallback className="rounded-xl bg-gray-200 text-gray-600 font-bold text-xs">EM</AvatarFallback>
                 </Avatar>
-                <div className="grid flex-1 text-left text-sm ml-2">
-                  <span className="truncate font-bold text-gray-900">Emmanuel</span>
-                  <span className="truncate text-[10px] text-gray-400 font-bold">m@example.com</span>
-                </div>
-                <MoreHorizontal className="ml-auto size-4 text-gray-400" />
+                {!isCollapsed && (
+                  <>
+                    <div className="grid flex-1 text-left text-sm ml-3">
+                      <span className="truncate font-bold text-gray-900 text-[13px]">Emmanuel</span>
+                      <span className="truncate text-[10px] text-gray-400 font-bold uppercase tracking-tight">Admin Portal</span>
+                    </div>
+                    <MoreHorizontal className="ml-auto size-4 text-gray-400" />
+                  </>
+                )}
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-xl shadow-xl border-gray-100"
+                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-2xl shadow-2xl border-gray-100 p-2"
                 side="top"
                 align="end"
-                sideOffset={4}
+                sideOffset={8}
               >
                 <DropdownMenuLabel className="p-0 font-normal">
-                  <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                    <Avatar className="h-8 w-8 rounded-lg">
+                  <div className="flex items-center gap-3 px-2 py-2 text-left text-sm">
+                    <Avatar className="h-9 w-9 rounded-xl border border-gray-100">
                       <AvatarImage src="/images/avatar.png" alt="Emmanuel" />
-                      <AvatarFallback className="rounded-lg">EM</AvatarFallback>
+                      <AvatarFallback className="rounded-xl">EM</AvatarFallback>
                     </Avatar>
                     <div className="grid flex-1 text-left text-sm">
                       <span className="truncate font-bold text-gray-900">Emmanuel</span>
@@ -209,18 +233,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </div>
                   </div>
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="rounded-lg font-bold text-xs">
-                  <UserCog className="mr-2 size-4 text-gray-400" />
-                  Account
+                <DropdownMenuSeparator className="my-2" />
+                <DropdownMenuItem className="rounded-xl font-bold text-xs py-2.5">
+                  <UserCog className="mr-3 size-4 text-gray-400" />
+                  Account Profile
                 </DropdownMenuItem>
-                <DropdownMenuItem className="rounded-lg font-bold text-xs">
-                  <Settings className="mr-2 size-4 text-gray-400" />
-                  Settings
+                <DropdownMenuItem className="rounded-xl font-bold text-xs py-2.5">
+                  <Settings className="mr-3 size-4 text-gray-400" />
+                  Portal Settings
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="rounded-lg text-red-600 focus:text-red-700 focus:bg-red-50 font-bold text-xs">
-                  Log out
+                <DropdownMenuSeparator className="my-2" />
+                <DropdownMenuItem className="rounded-xl text-red-600 focus:text-red-700 focus:bg-red-50 font-bold text-xs py-2.5">
+                  Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
