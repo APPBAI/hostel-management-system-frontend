@@ -42,8 +42,8 @@ const roomStats = [
   { title: "RESERVED", value: "0", subtext: "" },
 ];
 
-const rooms = Array.from({ length: 21 }).map((_, i) => ({
-  id: "A101",
+const rooms = Array.from({ length: 24 }).map((_, i) => ({
+  id: `A${101 + i}`,
   type: "Single Room",
   capacity: "1/1",
   status:
