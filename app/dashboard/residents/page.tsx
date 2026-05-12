@@ -1,24 +1,24 @@
 "use client";
 
-import * as React from "react";
 import { motion } from "framer-motion";
-import { 
-  Plus, 
-  Download, 
-  Search, 
-  Phone, 
-  MessageSquare, 
-  ExternalLink,
-  BadgeCheck,
+import {
   AlertCircle,
-  MoreVertical
+  BadgeCheck,
+  Download,
+  ExternalLink,
+  MessageSquare,
+  MoreVertical,
+  Phone,
+  Plus,
+  Search,
 } from "lucide-react";
+import * as React from "react";
 
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const residents = [
   {
@@ -112,7 +112,14 @@ const residents = [
   },
 ];
 
-const filters = ["All", "Block A", "Block B", "Checked In", "Away", "Outstanding Fees"];
+const filters = [
+  "All",
+  "Block A",
+  "Block B",
+  "Checked In",
+  "Away",
+  "Outstanding Fees",
+];
 
 export default function ResidentsPage() {
   const [activeFilter, setActiveFilter] = React.useState("All");
@@ -122,11 +129,18 @@ export default function ResidentsPage() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-3xl font-black tracking-tight text-gray-900 leading-tight">Residents</h1>
-          <p className="text-[11px] text-gray-400 font-extrabold uppercase tracking-[0.2em]">24 registered residents</p>
+          <h1 className="text-3xl font-black tracking-tight text-gray-900 leading-tight">
+            Residents
+          </h1>
+          <p className="text-[11px] text-gray-400 font-extrabold uppercase tracking-[0.2em]">
+            24 registered residents
+          </p>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="outline" className="h-9 border-gray-100 bg-white shadow-sm text-gray-600 font-black text-[10px] px-4 rounded-md uppercase tracking-wider">
+          <Button
+            variant="outline"
+            className="h-9 border-gray-100 bg-white shadow-sm text-gray-600 font-black text-[10px] px-4 rounded-md uppercase tracking-wider"
+          >
             <Download className="mr-2 size-3.5" />
             Export CSV
           </Button>
@@ -144,8 +158,8 @@ export default function ResidentsPage() {
             key={filter}
             onClick={() => setActiveFilter(filter)}
             className={`relative h-7 px-4 rounded-md text-[9px] font-black uppercase tracking-wider transition-colors whitespace-nowrap z-10 ${
-              activeFilter === filter 
-                ? "text-gray-900" 
+              activeFilter === filter
+                ? "text-gray-900"
                 : "text-gray-400 hover:text-gray-600"
             }`}
           >
@@ -164,21 +178,34 @@ export default function ResidentsPage() {
       {/* Residents Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {residents.map((resident, index) => (
-          <Card key={index} className="border-gray-100 shadow-none rounded-none overflow-hidden hover:shadow-md transition-all duration-300 border bg-white">
+          <Card
+            key={index}
+            className="border-gray-100 shadow-none rounded-none overflow-hidden hover:shadow-md transition-all duration-300 border bg-white"
+          >
             <CardContent className="p-4 space-y-4">
               {/* Card Header */}
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-3">
                   <Avatar className="h-14 w-14 rounded-full border border-gray-100 bg-gray-50 flex items-center justify-center text-xs font-black text-gray-400">
                     <AvatarFallback className="bg-transparent">
-                      {resident.name.split(' ').map(n => n[0]).join('')}
+                      {resident.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
                     </AvatarFallback>
                   </Avatar>
                   <div className="space-y-1 mt-0.5">
-                    <h3 className="font-bold text-[12px] text-gray-900 leading-none">{resident.name}</h3>
-                    <p className="text-[9px] font-extrabold text-gray-400 uppercase tracking-widest">{resident.id}</p>
+                    <h3 className="font-bold text-[12px] text-gray-900 leading-none">
+                      {resident.name}
+                    </h3>
+                    <p className="text-[9px] font-extrabold text-gray-400 uppercase tracking-widest">
+                      {resident.id}
+                    </p>
                     <div className="flex items-center gap-2 pt-1">
-                      <Badge variant="secondary" className="bg-gray-100 text-gray-500 font-black text-[8px] px-2 py-0 h-4 w-fit border-none uppercase tracking-widest shrink-0">
+                      <Badge
+                        variant="secondary"
+                        className="bg-gray-100 text-gray-500 font-black text-[8px] px-2 py-0 h-4 w-fit border-none uppercase tracking-widest shrink-0"
+                      >
                         Room {resident.room}
                       </Badge>
                       <p className="text-[8px] text-gray-400 font-bold leading-none whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px]">
@@ -187,9 +214,14 @@ export default function ResidentsPage() {
                     </div>
                   </div>
                 </div>
-                <Badge variant="outline" className={`rounded-md px-1.5 py-0 text-[8px] font-black uppercase tracking-widest border-none h-4 ${
-                  resident.status === 'In' ? 'bg-gray-100 text-gray-400' : 'bg-gray-50 text-gray-300'
-                }`}>
+                <Badge
+                  variant="outline"
+                  className={`rounded-md px-1.5 py-0 text-[8px] font-black uppercase tracking-widest border-none h-4 ${
+                    resident.status === "In"
+                      ? "bg-gray-100 text-gray-400"
+                      : "bg-gray-50 text-gray-300"
+                  }`}
+                >
                   {resident.status}
                 </Badge>
               </div>
@@ -197,22 +229,34 @@ export default function ResidentsPage() {
               {/* Metrics Section */}
               <div className="grid grid-cols-2 gap-2">
                 <div className="bg-[#f9fafb] rounded-xl p-3.5 space-y-1.5 border border-gray-50/50">
-                  <p className="text-[7.5px] font-extrabold text-gray-400 uppercase tracking-[0.2em] leading-none">Outstanding Fees</p>
+                  <p className="text-[7.5px] font-extrabold text-gray-400 uppercase tracking-[0.2em] leading-none">
+                    Outstanding Fees
+                  </p>
                   <div className="flex items-center gap-1.5">
-                    {resident.fees === 'Clear' ? (
+                    {resident.fees === "Clear" ? (
                       <>
                         <BadgeCheck className="size-3.5 text-gray-900" />
-                        <span className="text-[10px] font-bold text-gray-900">Clear</span>
+                        <span className="text-[10px] font-bold text-gray-900">
+                          Clear
+                        </span>
                       </>
                     ) : (
-                      <span className="text-[10px] font-bold text-gray-900">{resident.fees}</span>
+                      <span className="text-[10px] font-bold text-gray-900">
+                        {resident.fees}
+                      </span>
                     )}
                   </div>
                 </div>
                 <div className="bg-[#f9fafb] rounded-xl p-3.5 space-y-1.5 border border-gray-50/50">
-                  <p className="text-[7.5px] font-extrabold text-gray-400 uppercase tracking-[0.2em] leading-none">Active Request</p>
+                  <p className="text-[7.5px] font-extrabold text-gray-400 uppercase tracking-[0.2em] leading-none">
+                    Active Request
+                  </p>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] font-bold text-gray-900">{resident.requests === 'None' ? 'None' : resident.requests}</span>
+                    <span className="text-[10px] font-bold text-gray-900">
+                      {resident.requests === "None"
+                        ? "None"
+                        : resident.requests}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -221,10 +265,16 @@ export default function ResidentsPage() {
               <div className="flex items-center justify-between pt-0.5">
                 <div className="flex items-center gap-1 text-[9px] font-black text-gray-900">
                   <Phone className="size-3 text-gray-300" />
-                  <span className="tracking-tight text-[9px] font-bold text-gray-600">{resident.phone}</span>
+                  <span className="tracking-tight text-[9px] font-bold text-gray-600">
+                    {resident.phone}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="h-8 border-gray-100 rounded-lg text-[9px] font-black text-gray-600 px-3 hover:bg-gray-50 shadow-none">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-8 border-gray-100 rounded-lg text-[9px] font-black text-gray-600 px-3 hover:bg-gray-50 shadow-none"
+                  >
                     <MessageSquare className="mr-1.5 size-3 text-gray-400" />
                     Message
                   </Button>

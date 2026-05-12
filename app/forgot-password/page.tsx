@@ -15,7 +15,6 @@ export default function ForgotPasswordPage() {
       {/* Left Side - Auth Form (50%) */}
       <div className="flex w-full flex-col items-center justify-center px-6 lg:w-1/2 relative">
         <div className="w-full max-w-[360px] flex flex-col items-center space-y-4 md:space-y-6">
-          
           {/* Header & Logo SVG */}
           <div className="flex flex-col items-center gap-3 text-center mb-1">
             <div className="relative h-12 w-12 flex items-center justify-center">
@@ -41,9 +40,12 @@ export default function ForgotPasswordPage() {
           <Card className="w-full border-gray-100 bg-[#f9fafb]/50 shadow-sm rounded-xl overflow-hidden border">
             <CardContent className="p-6 md:p-8 space-y-5 md:space-y-6">
               <div className="text-left space-y-1.5 md:space-y-2">
-                <h2 className="text-lg md:text-xl font-bold text-gray-900 leading-tight tracking-tight">Forgot Password?</h2>
+                <h2 className="text-lg md:text-xl font-bold text-gray-900 leading-tight tracking-tight">
+                  Forgot Password?
+                </h2>
                 <p className="text-[11px] md:text-xs text-gray-400 font-medium leading-relaxed">
-                  No worries! Enter your email address and we&apos;ll send you instructions to reset your password.
+                  No worries! Enter your email address and we&apos;ll send you
+                  instructions to reset your password.
                 </p>
               </div>
 
@@ -52,11 +54,16 @@ export default function ForgotPasswordPage() {
                 onSubmit={(e) => e.preventDefault()}
               >
                 <div className="space-y-1 md:space-y-1.5">
-                  <Label htmlFor="email" className="text-[10px] font-bold text-gray-900 uppercase tracking-tight">Email</Label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    placeholder="m@example.com" 
+                  <Label
+                    htmlFor="email"
+                    className="text-[10px] font-bold text-gray-900 uppercase tracking-tight"
+                  >
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="m@example.com"
                     className="h-9 md:h-10 border-gray-200 bg-white rounded-md focus:ring-0 focus:border-gray-300 transition-all font-medium placeholder:text-gray-300 text-xs"
                   />
                 </div>
@@ -83,7 +90,21 @@ export default function ForgotPasswordPage() {
           {/* Footer */}
           <div className="text-center pt-2">
             <p className="text-[8px] md:text-[9px] font-bold text-gray-400 max-w-[240px] leading-relaxed mx-auto uppercase tracking-tighter">
-              Need more help? Contact our <Link href="#" className="underline decoration-gray-300 hover:text-gray-600 transition-colors">Support Team</Link> or view our <Link href="#" className="underline decoration-gray-300 hover:text-gray-600 transition-colors">Help Center</Link>.
+              Need more help? Contact our{" "}
+              <Link
+                href="#"
+                className="underline decoration-gray-300 hover:text-gray-600 transition-colors"
+              >
+                Support Team
+              </Link>{" "}
+              or view our{" "}
+              <Link
+                href="#"
+                className="underline decoration-gray-300 hover:text-gray-600 transition-colors"
+              >
+                Help Center
+              </Link>
+              .
             </p>
           </div>
         </div>
