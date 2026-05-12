@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className={`${manrope.className} ${geistMono.variable} min-h-full flex flex-col`}>
+      <body
+        className={`${manrope.className} ${geistMono.variable} min-h-full flex flex-col`}
+      >
         {children}
       </body>
     </html>

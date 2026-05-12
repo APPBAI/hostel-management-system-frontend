@@ -1,7 +1,7 @@
-import 'dotenv/config';
+import "dotenv/config";
 
 function main(): void {
-  console.log('Server starting...');
+  console.log("Server starting...");
 }
 
 main();
