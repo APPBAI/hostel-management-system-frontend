@@ -114,9 +114,9 @@ export default function GateLogPage() {
 
       {/* Metrics Section */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {gateStats.map((stat, i) => (
+        {gateStats.map((stat) => (
           <Card
-            key={i}
+            key={stat.title}
             className="border-gray-100 shadow-none border rounded-xl bg-white p-6"
           >
             <CardHeader className="p-0 pb-4">
@@ -289,6 +289,7 @@ export default function GateLogPage() {
               <TableBody>
                 {logEntries.map((entry, idx) => (
                   <TableRow
+                    // biome-ignore lint/suspicious/noArrayIndexKey: static mock list
                     key={idx}
                     className="border-gray-50 hover:bg-gray-50/30 transition-colors"
                   >

@@ -159,9 +159,9 @@ export default function FinancePage() {
 
       {/* Stats Cards with Sparklines */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {financeStats.map((stat, i) => (
+        {financeStats.map((stat) => (
           <Card
-            key={i}
+            key={stat.title}
             className="border-gray-100 shadow-none border rounded-xl bg-white overflow-hidden"
           >
             <div className="p-6 pb-2">
@@ -450,7 +450,10 @@ function ChevronDown(props: React.SVGProps<SVGSVGElement>) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      role="img"
+      aria-label="Chevron Down"
     >
+      <title>Chevron Down</title>
       <path d="m6 9 6 6 6-6" />
     </svg>
   );

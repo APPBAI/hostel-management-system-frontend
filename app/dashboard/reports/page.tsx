@@ -135,9 +135,9 @@ export default function ReportsPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-3">
-          {recentReports.map((report, idx) => (
+          {recentReports.map((report) => (
             <div
-              key={idx}
+              key={report.name}
               className="flex items-center justify-between p-5 rounded-2xl border border-gray-100 bg-white hover:bg-gray-50/50 transition-colors group"
             >
               <div className="flex items-center gap-4">

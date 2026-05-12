@@ -153,9 +153,9 @@ export default function DashboardPage() {
 
       {/* KPI Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {kpiData.map((kpi, index) => (
+        {kpiData.map((kpi) => (
           <Card
-            key={index}
+            key={kpi.title}
             className="border-gray-100 shadow-none border-t-0 border-r-0 border-l-0 rounded-none bg-white py-4 px-5"
           >
             <CardHeader className="p-0 space-y-0.5">
@@ -343,6 +343,7 @@ export default function DashboardPage() {
               <div className="grid grid-cols-12 gap-2">
                 {Array.from({ length: 48 }).map((_, i) => (
                   <div
+                    // biome-ignore lint/suspicious/noArrayIndexKey: static grid
                     key={i}
                     className={`aspect-square rounded-[3px] ${
                       i % 15 === 0
@@ -386,7 +387,12 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="flex flex-col items-center justify-center p-0 space-y-8">
               <div className="relative size-40 flex items-center justify-center">
-                <svg className="size-full transform -rotate-90">
+                <svg
+                  className="size-full transform -rotate-90"
+                  role="img"
+                  aria-label="Occupancy Chart"
+                >
+                  <title>Occupancy Chart</title>
                   <circle
                     cx="80"
                     cy="80"
@@ -455,7 +461,8 @@ export default function DashboardPage() {
             <CardContent className="p-0 space-y-6">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div
-                  key={`skeleton-${i}`}
+                  // biome-ignore lint/suspicious/noArrayIndexKey: static skeleton
+                  key={i}
                   className="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0"
                 >
                   <div className="size-2 rounded-full bg-black mt-1.5 shrink-0" />

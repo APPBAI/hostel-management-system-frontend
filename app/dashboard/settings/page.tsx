@@ -140,9 +140,9 @@ export default function SettingsPage() {
                       title: "Financial Reports",
                       desc: "Weekly summary of fees and billing collection",
                     },
-                  ].map((item, i) => (
+                  ].map((item) => (
                     <div
-                      key={i}
+                      key={item.title}
                       className="flex items-center justify-between p-4 rounded-2xl border border-gray-50 bg-gray-50/20"
                     >
                       <div className="space-y-1">

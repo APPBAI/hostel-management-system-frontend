@@ -155,6 +155,7 @@ export default function ResidentsPage() {
       <div className="flex w-fit items-center border border-gray-100 rounded-lg p-1 bg-white shadow-sm overflow-hidden">
         {filters.map((filter) => (
           <button
+            type="button"
             key={filter}
             onClick={() => setActiveFilter(filter)}
             className={`relative h-7 px-4 rounded-md text-[9px] font-black uppercase tracking-wider transition-colors whitespace-nowrap z-10 ${
@@ -177,9 +178,9 @@ export default function ResidentsPage() {
 
       {/* Residents Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {residents.map((resident, index) => (
+        {residents.map((resident) => (
           <Card
-            key={index}
+            key={resident.id}
             className="border-gray-100 shadow-none rounded-none overflow-hidden hover:shadow-md transition-all duration-300 border bg-white"
           >
             <CardContent className="p-4 space-y-4">
