@@ -8,7 +8,7 @@ import {
   HelpCircle,
   LayoutDashboard,
   MessageSquare,
-  MoreHorizontal,
+  MoreVertical,
   Search,
   Settings,
   UserCog,
@@ -155,15 +155,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent
-        className={`transition-all duration-200 ${isCollapsed ? "px-1" : "px-3"}`}
-      >
+      <SidebarContent className={`transition-all duration-200 ${isCollapsed ? "px-1" : "px-3"} flex flex-col`}>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="gap-1">
               {navMain.map((item) => {
-                const isActive =
-                  pathname === item.url || pathname?.startsWith(`${item.url}/`);
+                const isActive = item.url === "/dashboard" 
+                  ? pathname === "/dashboard" 
+                  : (pathname === item.url || pathname?.startsWith(`${item.url}/`));
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
@@ -191,33 +190,42 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        <SidebarGroup className="mt-auto">
+          <SidebarGroupContent>
+            <SidebarMenu className="gap-1">
+              {navSecondary.map((item) => {
+                const isActive = pathname === item.url || pathname?.startsWith(`${item.url}/`);
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      size="sm"
+                      isActive={isActive}
+                      tooltip={item.title}
+                      render={<a href={item.url} />}
+                      nativeButton={false}
+                      className={`py-5 font-bold transition-all duration-200 ${isCollapsed ? "px-2" : "px-4"} ${
+                        isActive 
+                          ? "bg-gray-100 text-gray-900" 
+                          : "text-gray-400 hover:text-gray-900"
+                      }`}
+                    >
+                      <item.icon className={`size-4 shrink-0 ${isActive ? "text-gray-900" : "text-gray-400"}`} />
+                      {!isCollapsed && <span className="text-[11px] uppercase tracking-wider ml-1">{item.title}</span>}
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter
         className={`border-t border-gray-50 transition-all duration-200 ${isCollapsed ? "p-1" : "p-3"}`}
       >
         <SidebarMenu className="gap-1">
-          {navSecondary.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
-                size="sm"
-                tooltip={item.title}
-                // biome-ignore lint/a11y/useAnchorContent: aria-label provides accessible content
-                render={<a href={item.url} aria-label={item.title} />}
-                nativeButton={false}
-                className={`text-gray-400 hover:text-gray-900 py-5 font-bold transition-all duration-200 ${isCollapsed ? "px-2" : "px-4"}`}
-              >
-                <item.icon className="size-4 shrink-0" />
-                {!isCollapsed && (
-                  <span className="text-[11px] uppercase tracking-wider ml-1">
-                    {item.title}
-                  </span>
-                )}
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-
-          <SidebarMenuItem className={isCollapsed ? "" : "mt-2 pt-2"}>
+          <SidebarMenuItem className={isCollapsed ? "" : "mt-0"}>
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={
@@ -244,7 +252,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         Admin Portal
                       </span>
                     </div>
-                    <MoreHorizontal className="ml-auto size-4 text-gray-400" />
+                    <MoreVertical className="ml-auto size-4 text-gray-400" />
                   </>
                 )}
               </DropdownMenuTrigger>
