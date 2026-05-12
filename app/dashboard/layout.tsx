@@ -19,12 +19,46 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Bell, PanelLeft, Search } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  const getPageTitle = (path: string) => {
+    const segment = path.split("/").pop() || "";
+    switch (segment) {
+      case "dashboard":
+        return "Dashboard";
+      case "rooms":
+        return "Rooms & Beds";
+      case "residents":
+        return "Residents";
+      case "maintenance":
+        return "Maintenance";
+      case "staff":
+        return "Staff Management";
+      case "finance":
+        return "Finance & Billing";
+      case "communication":
+        return "Communication Hub";
+      case "reports":
+        return "Reports & Analytics";
+      case "gate-log":
+        return "Security Gate Log";
+      case "settings":
+        return "Account Settings";
+      default:
+        return (
+          segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ")
+        );
+    }
+  };
+
+  const pageTitle = getPageTitle(pathname);
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -47,7 +81,7 @@ export default function DashboardLayout({
                 <BreadcrumbSeparator className="hidden md:block text-gray-300" />
                 <BreadcrumbItem>
                   <BreadcrumbPage className="text-[11px] text-gray-900 font-black uppercase tracking-tight">
-                    Dashboard
+                    {pageTitle}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
