@@ -453,10 +453,10 @@ export default function DashboardPage() {
               </Button>
             </CardHeader>
             <CardContent className="p-0 space-y-6">
-              {alerts.map((alert) => (
+              {Array.from({ length: 5 }).map((_, i) => (
                 <div
-                  key={alert.title}
-                  className="flex items-center justify-between p-4 border border-gray-50 rounded-2xl"
+                  key={`skeleton-${i}`}
+                  className="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0"
                 >
                   <div className="size-2 rounded-full bg-black mt-1.5 shrink-0" />
                   <div className="flex-1 space-y-1">
