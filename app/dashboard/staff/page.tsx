@@ -101,12 +101,12 @@ export default function StaffPage() {
         <div className="flex items-center gap-3">
           <Button
             variant="outline"
-            className="h-10 border-gray-100 bg-white shadow-sm text-gray-600 font-bold text-xs px-4 rounded-xl"
+            className="h-10 border-gray-100 bg-white shadow-none text-gray-600 font-bold text-xs px-4 rounded-md"
           >
             <Download className="mr-2 size-4" />
             Export Staff List
           </Button>
-          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-md font-bold text-xs px-4 rounded-xl">
+          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-none font-bold text-xs px-4 rounded-md">
             <Plus className="mr-2 size-4" />
             Add Staff Member
           </Button>
@@ -118,7 +118,7 @@ export default function StaffPage() {
         {staffStats.map((stat) => (
           <Card
             key={stat.title}
-            className="border-gray-100 shadow-none border rounded-xl bg-white p-6"
+            className="border-gray-100 shadow-none border rounded-md bg-white p-6"
           >
             <CardHeader className="p-0 pb-4">
               <CardTitle className="text-[9px] font-extrabold text-gray-400 uppercase tracking-[0.2em]">
@@ -155,14 +155,14 @@ export default function StaffPage() {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex bg-gray-100 p-1 rounded-xl">
+            <div className="flex bg-gray-100 p-1 rounded-md">
               {["All", "On Duty", "Away", "On Leave"].map((tab) => (
                 <Button
                   key={tab}
                   variant="ghost"
-                  className={`h-7 px-4 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${
+                  className={`h-7 px-4 rounded-sm text-[9px] font-black uppercase tracking-widest transition-all ${
                     tab === "All"
-                      ? "bg-white text-gray-900 shadow-sm"
+                      ? "bg-white text-gray-900 shadow-none"
                       : "text-gray-400 hover:text-gray-600"
                   }`}
                 >
@@ -178,26 +178,26 @@ export default function StaffPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-300" />
             <Input
               placeholder="Search by name or role"
-              className="pl-10 h-10 border-gray-100 bg-white shadow-sm rounded-xl text-xs font-medium focus:ring-0 focus:border-gray-200"
+              className="pl-10 h-10 border-gray-100 bg-white shadow-none rounded-md text-xs font-medium focus:ring-0 focus:border-gray-200"
             />
           </div>
           <Button
             variant="outline"
-            className="h-10 border-gray-100 bg-white shadow-sm rounded-xl px-4 text-xs font-bold text-gray-600"
+            className="h-10 border-gray-100 bg-white shadow-none rounded-md px-4 text-xs font-bold text-gray-600"
           >
             Role <ChevronDown className="ml-2 size-3" />
           </Button>
           <Button
             variant="outline"
-            className="h-10 border-gray-100 bg-white shadow-sm rounded-xl px-4 text-xs font-bold text-gray-600"
+            className="h-10 border-gray-100 bg-white shadow-none rounded-md px-4 text-xs font-bold text-gray-600"
           >
             Block <ChevronDown className="ml-2 size-3" />
           </Button>
         </div>
 
-        <div className="border border-gray-100 rounded-2xl bg-white overflow-hidden shadow-sm">
+        <div className="border border-gray-100 rounded-none bg-white overflow-hidden shadow-none">
           <Table>
-            <TableHeader className="bg-gray-50/50">
+            <TableHeader className="bg-[#78787833]">
               <TableRow className="border-gray-100 hover:bg-transparent">
                 <TableHead className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-6 h-12">
                   Member
@@ -224,7 +224,7 @@ export default function StaffPage() {
                 >
                   <TableCell className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <Avatar className="h-9 w-9 rounded-xl border border-gray-100">
+                      <Avatar className="h-9 w-9 rounded-md border border-gray-100">
                         <AvatarFallback className="bg-gray-50 text-[10px] font-black text-gray-400">
                           {staff.name
                             .split(" ")
@@ -293,15 +293,15 @@ export default function StaffPage() {
                       />
                       <DropdownMenuContent
                         align="end"
-                        className="rounded-xl border-gray-100"
+                        className="rounded-md border-gray-100"
                       >
-                        <DropdownMenuItem className="text-xs font-bold rounded-lg">
+                        <DropdownMenuItem className="text-xs font-bold rounded-sm">
                           View Profile
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-xs font-bold rounded-lg">
+                        <DropdownMenuItem className="text-xs font-bold rounded-sm">
                           Assign Shift
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-xs font-bold rounded-lg text-red-600">
+                        <DropdownMenuItem className="text-xs font-bold rounded-sm text-red-600">
                           Remove Staff
                         </DropdownMenuItem>
                       </DropdownMenuContent>
@@ -319,7 +319,7 @@ export default function StaffPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-lg"
+                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-md"
                 disabled
               >
                 Previous
@@ -327,7 +327,7 @@ export default function StaffPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-lg"
+                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-md"
               >
                 Next
               </Button>

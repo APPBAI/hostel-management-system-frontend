@@ -100,12 +100,12 @@ export default function GateLogPage() {
         <div className="flex items-center gap-3">
           <Button
             variant="outline"
-            className="h-10 border-gray-100 bg-white shadow-sm text-gray-600 font-bold text-xs px-4 rounded-xl"
+            className="h-10 border-gray-100 bg-white shadow-none text-gray-600 font-bold text-xs px-4 rounded-md"
           >
             <Download className="mr-2 size-4" />
             Export Log
           </Button>
-          <Button className="h-10 bg-red-600 hover:bg-red-700 text-white shadow-md font-black text-xs px-4 rounded-xl uppercase tracking-wider">
+          <Button className="h-10 bg-red-600 hover:bg-red-700 text-white shadow-none font-black text-xs px-4 rounded-md uppercase tracking-wider">
             <ShieldAlert className="mr-2 size-4" />
             Emergency Lockdown
           </Button>
@@ -117,7 +117,7 @@ export default function GateLogPage() {
         {gateStats.map((stat) => (
           <Card
             key={stat.title}
-            className="border-gray-100 shadow-none border rounded-xl bg-white p-6"
+            className="border-gray-100 shadow-none border rounded-md bg-white p-6"
           >
             <CardHeader className="p-0 pb-4">
               <CardTitle className="text-[9px] font-extrabold text-gray-400 uppercase tracking-[0.2em]">
@@ -148,7 +148,7 @@ export default function GateLogPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Side: Gate Officer Panel */}
         <div className="lg:col-span-4 space-y-6">
-          <Card className="border-gray-100 shadow-none rounded-2xl border bg-white overflow-hidden">
+          <Card className="border-gray-100 shadow-none rounded-md border bg-white overflow-hidden">
             <CardHeader className="px-6 py-4 border-b border-gray-50 bg-gray-50/30">
               <CardTitle className="text-sm font-bold text-gray-900">
                 Gate Officer Panel
@@ -157,11 +157,11 @@ export default function GateLogPage() {
                 Scan QR or search by ID
               </p>
             </CardHeader>
-            <CardContent className="p-6 space-y-6">
+            <CardContent className="p-4 space-y-4">
               {/* QR Scan Area */}
-              <div className="aspect-square w-full rounded-2xl border-2 border-dashed border-gray-100 flex flex-col items-center justify-center space-y-4 bg-gray-50/50 hover:bg-gray-50 transition-colors cursor-pointer group">
-                <div className="size-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gray-400 group-hover:text-gray-900 transition-colors">
-                  <QrCode className="size-8" />
+              <div className="aspect-[16/10] w-full rounded-md border-2 border-dashed border-gray-100 flex flex-col items-center justify-center space-y-3 bg-gray-50/50 hover:bg-gray-50 transition-colors cursor-pointer group">
+                <div className="size-12 rounded-md bg-white shadow-none flex items-center justify-center text-gray-400 group-hover:text-gray-900 transition-colors border border-gray-100">
+                  <QrCode className="size-6" />
                 </div>
                 <div className="text-center">
                   <p className="text-[11px] font-bold text-gray-900">
@@ -176,15 +176,15 @@ export default function GateLogPage() {
               <div className="space-y-4">
                 <Input
                   placeholder="Enter student ID..."
-                  className="h-11 border-gray-100 bg-gray-50/50 rounded-xl text-xs font-medium focus:ring-0 focus:border-gray-200"
+                  className="h-11 border-gray-100 bg-gray-50/50 rounded-md text-xs font-medium focus:ring-0 focus:border-gray-200 shadow-none"
                 />
                 <div className="grid grid-cols-2 gap-3">
-                  <Button className="h-10 bg-black hover:bg-black/90 text-white font-bold text-[11px] rounded-xl uppercase tracking-wider">
+                  <Button className="h-10 bg-black hover:bg-black/90 text-white font-bold text-[11px] rounded-md uppercase tracking-wider shadow-none">
                     Mark Entry
                   </Button>
                   <Button
                     variant="outline"
-                    className="h-10 border-gray-100 text-gray-600 font-bold text-[11px] rounded-xl uppercase tracking-wider"
+                    className="h-10 border-gray-100 text-gray-600 font-bold text-[11px] rounded-md uppercase tracking-wider shadow-none"
                   >
                     Mark Exit
                   </Button>
@@ -193,7 +193,7 @@ export default function GateLogPage() {
 
               {/* Recent Activity List */}
               <div className="pt-4 border-t border-gray-50 space-y-3">
-                <div className="flex items-center gap-3 p-3 rounded-xl border border-gray-50 bg-white">
+                <div className="flex items-center gap-3 p-3 rounded-md border border-gray-50 bg-white">
                   <div className="size-2 rounded-full bg-black" />
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold text-gray-900 truncate">
@@ -205,7 +205,7 @@ export default function GateLogPage() {
                   </div>
                   <Badge
                     variant="outline"
-                    className="bg-gray-50 border-none text-[9px] font-black text-gray-400 h-5 px-1.5 uppercase"
+                    className="bg-gray-50 border-none text-[9px] font-black text-gray-400 h-5 px-1.5 uppercase rounded-md"
                   >
                     Entry
                   </Badge>
@@ -225,14 +225,14 @@ export default function GateLogPage() {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <div className="flex bg-gray-100 p-1 rounded-xl">
+              <div className="flex bg-gray-100 p-1 rounded-md">
                 {["All", "Entries", "Exits"].map((tab) => (
                   <Button
                     key={tab}
                     variant="ghost"
-                    className={`h-7 px-4 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${
+                    className={`h-7 px-4 rounded-sm text-[9px] font-black uppercase tracking-widest transition-all ${
                       tab === "All"
-                        ? "bg-white text-gray-900 shadow-sm"
+                        ? "bg-white text-gray-900 shadow-none"
                         : "text-gray-400 hover:text-gray-600"
                     }`}
                   >
@@ -248,26 +248,26 @@ export default function GateLogPage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-300" />
               <Input
                 placeholder="Search by Resident"
-                className="pl-10 h-10 border-gray-100 bg-white shadow-sm rounded-xl text-xs font-medium focus:ring-0 focus:border-gray-200"
+                className="pl-10 h-10 border-gray-100 bg-white shadow-none rounded-md text-xs font-medium focus:ring-0 focus:border-gray-200"
               />
             </div>
             <Button
               variant="outline"
-              className="h-10 border-gray-100 bg-white shadow-sm rounded-xl px-4 text-xs font-bold text-gray-600"
+              className="h-10 border-gray-100 bg-white shadow-none rounded-md px-4 text-xs font-bold text-gray-600"
             >
               Status <ChevronDown className="ml-2 size-3" />
             </Button>
             <Button
               variant="outline"
-              className="h-10 border-gray-100 bg-white shadow-sm rounded-xl px-4 text-xs font-bold text-gray-600"
+              className="h-10 border-gray-100 bg-white shadow-none rounded-md px-4 text-xs font-bold text-gray-600"
             >
               View
             </Button>
           </div>
 
-          <div className="border border-gray-100 rounded-2xl bg-white overflow-hidden shadow-sm">
+          <div className="border border-gray-100 rounded-none bg-white overflow-hidden shadow-none">
             <Table>
-              <TableHeader className="bg-gray-50/50">
+              <TableHeader className="bg-[#78787833]">
                 <TableRow className="border-gray-100 hover:bg-transparent">
                   <TableHead className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-6 h-12">
                     Resident
@@ -336,7 +336,7 @@ export default function GateLogPage() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-lg"
+                  className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-md"
                   disabled
                 >
                   Previous
@@ -344,7 +344,7 @@ export default function GateLogPage() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-lg"
+                  className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-md"
                 >
                   Next
                 </Button>
@@ -355,7 +355,7 @@ export default function GateLogPage() {
       </div>
 
       {/* Visitor Registration Section */}
-      <Card className="border-gray-100 shadow-none rounded-2xl border bg-white overflow-hidden mt-8">
+      <Card className="border-gray-100 shadow-none rounded-md border bg-white overflow-hidden mt-8">
         <CardHeader className="px-8 pt-8">
           <CardTitle className="text-lg font-bold text-gray-900">
             Register Visitor
@@ -366,8 +366,8 @@ export default function GateLogPage() {
         </CardHeader>
         <CardContent className="px-8 pb-8 space-y-8">
           {/* Large QR Scan Area */}
-          <div className="w-full h-48 rounded-2xl border-2 border-dashed border-gray-100 flex flex-col items-center justify-center space-y-4 bg-gray-50/50 hover:bg-gray-50 transition-colors cursor-pointer group">
-            <div className="size-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gray-400 group-hover:text-gray-900 transition-colors">
+          <div className="w-full h-48 rounded-md border-2 border-dashed border-gray-100 flex flex-col items-center justify-center space-y-4 bg-gray-50/50 hover:bg-gray-50 transition-colors cursor-pointer group">
+            <div className="size-16 rounded-md bg-white shadow-none border border-gray-100 flex items-center justify-center text-gray-400 group-hover:text-gray-900 transition-colors">
               <Scan className="size-8" />
             </div>
             <div className="text-center">
@@ -387,7 +387,7 @@ export default function GateLogPage() {
               </p>
               <Input
                 placeholder="John Doe"
-                className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium"
+                className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none placeholder:text-gray-300"
               />
             </div>
             <div className="space-y-2">
@@ -396,7 +396,7 @@ export default function GateLogPage() {
               </p>
               <Input
                 placeholder="National ID / Passport"
-                className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium"
+                className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none placeholder:text-gray-300"
               />
             </div>
             <div className="space-y-2">
@@ -405,7 +405,7 @@ export default function GateLogPage() {
               </p>
               <Input
                 placeholder="Resident ID or name"
-                className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium"
+                className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none placeholder:text-gray-300"
               />
             </div>
             <div className="space-y-2">
@@ -413,10 +413,13 @@ export default function GateLogPage() {
                 Purpose
               </p>
               <Select>
-                <SelectTrigger className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium text-gray-400">
-                  <SelectValue placeholder="Select Purpose" />
+                <SelectTrigger className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium text-gray-400 shadow-none">
+                  <SelectValue
+                    placeholder="Select Purpose"
+                    className="placeholder:text-gray-300"
+                  />
                 </SelectTrigger>
-                <SelectContent className="rounded-xl border-gray-100">
+                <SelectContent className="rounded-md border-gray-100">
                   <SelectItem value="visit">Personal Visit</SelectItem>
                   <SelectItem value="delivery">Delivery</SelectItem>
                   <SelectItem value="maintenance">
@@ -428,13 +431,13 @@ export default function GateLogPage() {
           </div>
 
           <div className="flex items-center gap-3 pt-2">
-            <Button className="h-11 bg-black hover:bg-black/90 text-white font-bold text-[11px] px-8 rounded-xl uppercase tracking-wider shadow-md">
+            <Button className="h-11 bg-black hover:bg-black/90 text-white font-bold text-[11px] px-8 rounded-md uppercase tracking-wider shadow-none">
               <UserPlus className="mr-2 size-4" />
               Register and Issue Badge
             </Button>
             <Button
               variant="outline"
-              className="h-11 border-gray-100 text-gray-400 font-bold text-[11px] px-6 rounded-xl uppercase tracking-wider"
+              className="h-11 border-gray-100 text-gray-400 font-bold text-[11px] px-6 rounded-md uppercase tracking-wider shadow-none"
             >
               Clear
             </Button>
@@ -442,7 +445,7 @@ export default function GateLogPage() {
 
           {/* Recent Visitor Activity */}
           <div className="pt-8 border-t border-gray-50">
-            <div className="flex items-center justify-between p-4 rounded-2xl border border-gray-100 bg-gray-50/30">
+            <div className="flex items-center justify-between p-4 rounded-md border border-gray-100 bg-gray-50/30">
               <div className="flex items-center gap-4">
                 <div className="size-2 rounded-full bg-black" />
                 <div className="flex flex-col">
@@ -456,7 +459,7 @@ export default function GateLogPage() {
               </div>
               <Badge
                 variant="outline"
-                className="bg-white border-gray-200 text-[9px] font-black text-gray-400 h-6 px-3 uppercase tracking-wider rounded-lg"
+                className="bg-white border-gray-200 text-[9px] font-black text-gray-400 h-6 px-3 uppercase tracking-wider rounded-md"
               >
                 Entry
               </Badge>

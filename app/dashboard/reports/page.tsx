@@ -80,7 +80,7 @@ export default function ReportsPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-md font-bold text-xs px-4 rounded-xl">
+          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-none font-bold text-xs px-4 rounded-md">
             <Plus className="mr-2 size-4" />
             Generate New Report
           </Button>
@@ -92,10 +92,10 @@ export default function ReportsPage() {
         {reportCategories.map((category) => (
           <Card
             key={category.title}
-            className="border-gray-100 shadow-none border rounded-2xl bg-white hover:shadow-md transition-all group cursor-pointer"
+            className="border-gray-100 shadow-none border rounded-md bg-white hover:shadow-sm transition-all group cursor-pointer"
           >
             <CardContent className="p-8 space-y-6">
-              <div className="size-12 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-gray-900 group-hover:bg-gray-100 transition-all">
+              <div className="size-12 rounded-md bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-gray-900 group-hover:bg-gray-100 transition-all">
                 <category.icon className="size-6" />
               </div>
               <div className="space-y-2">
@@ -138,10 +138,10 @@ export default function ReportsPage() {
           {recentReports.map((report) => (
             <div
               key={report.name}
-              className="flex items-center justify-between p-5 rounded-2xl border border-gray-100 bg-white hover:bg-gray-50/50 transition-colors group"
+              className="flex items-center justify-between p-5 rounded-md border border-gray-100 bg-white hover:bg-gray-50/50 transition-colors group"
             >
               <div className="flex items-center gap-4">
-                <div className="size-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400">
+                <div className="size-10 rounded-md bg-gray-50 flex items-center justify-center text-gray-400">
                   <FileText className="size-5" />
                 </div>
                 <div className="flex flex-col">
@@ -161,14 +161,14 @@ export default function ReportsPage() {
               <div className="flex items-center gap-3">
                 <Badge
                   variant="outline"
-                  className="bg-white border-gray-100 text-[9px] font-black text-gray-400 h-6 px-3 uppercase tracking-widest"
+                  className="bg-white border-gray-100 text-[9px] font-black text-gray-400 h-6 px-3 uppercase tracking-widest rounded-md"
                 >
                   {report.type}
                 </Badge>
                 <Button
                   size="icon"
                   variant="ghost"
-                  className="size-9 rounded-xl text-gray-400 hover:text-gray-900 hover:bg-gray-100 transition-all"
+                  className="size-9 rounded-md text-gray-400 hover:text-gray-900 hover:bg-gray-100 transition-all"
                 >
                   <Download className="size-4" />
                 </Button>
@@ -179,10 +179,10 @@ export default function ReportsPage() {
       </div>
 
       {/* Quick Insights Section */}
-      <Card className="border-gray-100 shadow-none rounded-2xl border bg-[#18181b] overflow-hidden text-white">
+      <Card className="border-gray-100 shadow-none rounded-md border bg-[#18181b] overflow-hidden text-white">
         <CardContent className="p-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-md">
-            <div className="size-10 rounded-xl bg-white/10 flex items-center justify-center text-white">
+            <div className="size-10 rounded-md bg-white/10 flex items-center justify-center text-white">
               <LineChart className="size-5" />
             </div>
             <div className="space-y-2">
@@ -196,7 +196,7 @@ export default function ReportsPage() {
               </p>
             </div>
           </div>
-          <Button className="h-12 bg-white hover:bg-gray-100 text-black font-black text-xs px-8 rounded-xl shadow-2xl transition-all uppercase tracking-widest">
+          <Button className="h-12 bg-white hover:bg-gray-100 text-black font-black text-xs px-8 rounded-md shadow-none transition-all uppercase tracking-widest">
             Access Power BI Dashboard
           </Button>
         </CardContent>

@@ -37,7 +37,7 @@ export default function ForgotPasswordPage() {
           </div>
 
           {/* Forgot Password Card */}
-          <Card className="w-full border-gray-100 bg-[#f9fafb]/50 shadow-sm rounded-xl overflow-hidden border">
+          <Card className="w-full border-gray-100 bg-[#f9fafb]/50 shadow-none rounded-md overflow-hidden border">
             <CardContent className="p-6 md:p-8 space-y-5 md:space-y-6">
               <div className="text-left space-y-1.5 md:space-y-2">
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 leading-tight tracking-tight">
@@ -64,12 +64,12 @@ export default function ForgotPasswordPage() {
                     id="email"
                     type="email"
                     placeholder="m@example.com"
-                    className="h-9 md:h-10 border-gray-200 bg-white rounded-md focus:ring-0 focus:border-gray-300 transition-all font-medium placeholder:text-gray-300 text-xs"
+                    className="h-9 md:h-10 border-gray-200 bg-white rounded-md focus:ring-0 focus:border-gray-300 transition-all font-medium placeholder:text-gray-300 text-xs shadow-none"
                   />
                 </div>
 
                 <div className="space-y-2.5 md:space-y-3">
-                  <Button className="w-full h-9 md:h-10 bg-[#18181b] hover:bg-black text-white rounded-md font-bold text-xs transition-all shadow-sm mt-1">
+                  <Button className="w-full h-9 md:h-10 bg-[#18181b] hover:bg-black text-white rounded-md font-bold text-xs transition-all shadow-none mt-1">
                     Reset Password
                   </Button>
 
@@ -77,7 +77,7 @@ export default function ForgotPasswordPage() {
                     variant="outline"
                     render={<Link href="/login" />}
                     nativeButton={false}
-                    className="w-full h-9 md:h-10 border-gray-200 hover:bg-gray-50 text-gray-900 rounded-md font-bold text-xs transition-all flex items-center justify-center gap-2"
+                    className="w-full h-9 md:h-10 border-gray-200 hover:bg-gray-50 text-gray-900 rounded-md font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-none"
                   >
                     <ArrowLeft size={14} className="text-gray-400" />
                     Back to Login

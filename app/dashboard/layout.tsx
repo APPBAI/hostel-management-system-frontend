@@ -93,7 +93,7 @@ export default function DashboardLayout({
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 text-gray-400" />
               <Input
                 placeholder="Search..."
-                className="pl-9 h-8 bg-gray-50 border-none text-[11px] font-bold rounded-lg focus-visible:ring-1 focus-visible:ring-gray-200"
+                className="pl-9 h-8 bg-gray-50 border-none text-[11px] font-bold rounded-md focus-visible:ring-1 focus-visible:ring-gray-200 shadow-none"
               />
             </div>
             <Button
@@ -104,9 +104,9 @@ export default function DashboardLayout({
               <Bell className="size-4" />
               <span className="absolute top-1.5 right-1.5 size-1.5 bg-red-500 rounded-full border-2 border-white" />
             </Button>
-            <Avatar className="h-7 w-7 rounded-lg cursor-pointer">
+            <Avatar className="h-7 w-7 rounded-md cursor-pointer">
               <AvatarImage src="/images/avatar.png" alt="User" />
-              <AvatarFallback className="bg-gray-100 text-gray-600 font-bold text-[10px]">
+              <AvatarFallback className="bg-gray-100 text-gray-600 font-bold text-[10px] rounded-md">
                 EM
               </AvatarFallback>
             </Avatar>

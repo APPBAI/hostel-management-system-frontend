@@ -73,9 +73,9 @@ export default function CommunicationPage() {
           </p>
         </div>
 
-        <div className="flex-1 flex flex-col min-h-0 bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+        <div className="flex-1 flex flex-col min-h-0 bg-white border border-gray-100 rounded-md overflow-hidden shadow-none">
           <div className="p-4 border-b border-gray-50 space-y-4">
-            <Button className="w-full h-11 bg-[#18181b] hover:bg-black text-white font-bold text-xs rounded-2xl shadow-md">
+            <Button className="w-full h-11 bg-[#18181b] hover:bg-black text-white font-bold text-xs rounded-md shadow-none">
               <Plus className="mr-2 size-4" />
               Compose Message
             </Button>
@@ -83,7 +83,7 @@ export default function CommunicationPage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-300" />
               <Input
                 placeholder="Search conversations..."
-                className="pl-10 h-10 border-gray-100 bg-gray-50/50 rounded-xl text-[11px] font-medium focus:ring-0 focus:border-gray-200"
+                className="pl-10 h-10 border-gray-100 bg-gray-50/50 rounded-md text-[11px] font-medium focus:ring-0 focus:border-gray-200"
               />
             </div>
           </div>
@@ -94,14 +94,14 @@ export default function CommunicationPage() {
                 type="button"
                 key={chat.id}
                 onClick={() => setActiveChat(chat)}
-                className={`w-full flex items-center gap-4 p-4 rounded-2xl transition-all ${
+                className={`w-full flex items-center gap-4 p-4 rounded-md transition-all ${
                   activeChat.id === chat.id
-                    ? "bg-gray-100 shadow-sm"
+                    ? "bg-gray-100 shadow-none"
                     : "hover:bg-gray-50"
                 }`}
               >
                 <div className="relative">
-                  <Avatar className="h-11 w-11 rounded-2xl border border-white shadow-sm">
+                  <Avatar className="h-11 w-11 rounded-md border border-white shadow-none">
                     <AvatarFallback className="bg-gray-50 text-[10px] font-black text-gray-400">
                       {chat.name
                         .split(" ")
@@ -138,11 +138,11 @@ export default function CommunicationPage() {
       </div>
 
       {/* Main Content - Chat Window */}
-      <div className="flex-1 flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+      <div className="flex-1 flex flex-col bg-white border border-gray-100 rounded-md overflow-hidden shadow-none">
         {/* Chat Header */}
         <div className="h-16 px-6 border-b border-gray-50 flex items-center justify-between bg-gray-50/30">
           <div className="flex items-center gap-4">
-            <Avatar className="h-9 w-9 rounded-xl border border-white shadow-sm">
+            <Avatar className="h-9 w-9 rounded-md border border-white shadow-none">
               <AvatarFallback className="bg-white text-[10px] font-black text-gray-400">
                 {activeChat.name
                   .split(" ")
@@ -163,14 +163,14 @@ export default function CommunicationPage() {
             <Button
               variant="ghost"
               size="icon"
-              className="size-9 rounded-xl text-gray-400 hover:text-gray-900 hover:bg-white transition-all"
+              className="size-9 rounded-md text-gray-400 hover:text-gray-900 hover:bg-white transition-all"
             >
               <Search className="size-4" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="size-9 rounded-xl text-gray-400 hover:text-gray-900 hover:bg-white transition-all"
+              className="size-9 rounded-md text-gray-400 hover:text-gray-900 hover:bg-white transition-all"
             >
               <MoreVertical className="size-4" />
             </Button>
@@ -182,20 +182,20 @@ export default function CommunicationPage() {
           <div className="flex justify-center">
             <Badge
               variant="outline"
-              className="bg-white border-gray-100 text-[9px] font-black text-gray-400 h-6 px-4 uppercase tracking-widest rounded-full"
+              className="bg-white border-gray-100 text-[9px] font-black text-gray-400 h-6 px-4 uppercase tracking-widest rounded-md"
             >
               Today
             </Badge>
           </div>
 
           <div className="flex items-start gap-4 max-w-2xl">
-            <Avatar className="h-8 w-8 rounded-lg shrink-0">
+            <Avatar className="h-8 w-8 rounded-md shrink-0">
               <AvatarFallback className="bg-gray-100 text-[9px] font-black text-gray-400">
                 AO
               </AvatarFallback>
             </Avatar>
             <div className="space-y-2">
-              <div className="bg-white border border-gray-100 p-4 rounded-2xl rounded-tl-none shadow-sm text-[13px] font-medium text-gray-700 leading-relaxed">
+              <div className="bg-white border border-gray-100 p-4 rounded-md rounded-tl-none shadow-none text-[13px] font-medium text-gray-700 leading-relaxed">
                 Hi Admin, I wanted to check the status of my maintenance request
                 for the light fixture in A101. It&apos;s been a few days since I
                 reported it.
@@ -208,7 +208,7 @@ export default function CommunicationPage() {
 
           <div className="flex items-start gap-4 flex-row-reverse">
             <div className="space-y-2 flex flex-col items-end">
-              <div className="bg-black text-white p-4 rounded-2xl rounded-tr-none shadow-md text-[13px] font-medium leading-relaxed max-w-2xl">
+              <div className="bg-black text-white p-4 rounded-md rounded-tr-none shadow-none text-[13px] font-medium leading-relaxed max-w-2xl">
                 Hello Amara! We apologize for the delay. The maintenance team is
                 currently processing high-priority requests in Block C. They are
                 scheduled to be at Block A tomorrow morning.
@@ -230,14 +230,14 @@ export default function CommunicationPage() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-10 rounded-xl text-gray-400 hover:text-gray-900 hover:bg-gray-50"
+                className="size-10 rounded-md text-gray-400 hover:text-gray-900 hover:bg-gray-50"
               >
                 <Paperclip className="size-5" />
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-10 rounded-xl text-gray-400 hover:text-gray-900 hover:bg-gray-50"
+                className="size-10 rounded-md text-gray-400 hover:text-gray-900 hover:bg-gray-50"
               >
                 <ImageIcon className="size-5" />
               </Button>
@@ -245,17 +245,17 @@ export default function CommunicationPage() {
             <div className="flex-1 relative">
               <Input
                 placeholder="Type your message..."
-                className="h-12 border-gray-100 bg-gray-50/50 rounded-2xl text-[13px] font-medium focus:ring-0 focus:border-gray-200 pr-12"
+                className="h-12 border-gray-100 bg-gray-50/50 rounded-md text-[13px] font-medium focus:ring-0 focus:border-gray-200 pr-12"
               />
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute right-1 top-1 size-10 rounded-xl text-gray-300 hover:text-gray-900"
+                className="absolute right-1 top-1 size-10 rounded-md text-gray-300 hover:text-gray-900"
               >
                 <Smile className="size-5" />
               </Button>
             </div>
-            <Button className="h-12 w-12 bg-black hover:bg-black/90 text-white rounded-2xl shadow-lg flex items-center justify-center shrink-0">
+            <Button className="h-12 w-12 bg-black hover:bg-black/90 text-white rounded-md shadow-none flex items-center justify-center shrink-0">
               <Send className="size-5" />
             </Button>
           </div>

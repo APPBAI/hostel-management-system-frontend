@@ -41,7 +41,7 @@ export default function LoginPage() {
           </div>
 
           {/* Login Card */}
-          <Card className="w-full border-gray-100 bg-[#f9fafb]/50 shadow-sm rounded-xl overflow-hidden border">
+          <Card className="w-full border-gray-100 bg-[#f9fafb]/50 shadow-none rounded-md overflow-hidden border">
             <CardContent className="p-6 md:p-8 space-y-5 md:space-y-6">
               <div className="text-center space-y-0.5">
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 leading-tight">
@@ -64,7 +64,7 @@ export default function LoginPage() {
                     id="email"
                     type="email"
                     placeholder="m@example.com"
-                    className="h-9 md:h-10 border-gray-200 bg-white rounded-md focus:ring-0 focus:border-gray-300 transition-all font-medium placeholder:text-gray-300 text-xs"
+                    className="h-9 md:h-10 border-gray-200 bg-white rounded-md focus:ring-0 focus:border-gray-300 transition-all font-medium placeholder:text-gray-300 text-xs shadow-none"
                   />
                 </div>
 
@@ -80,7 +80,7 @@ export default function LoginPage() {
                     <Input
                       id="password"
                       type={showPassword ? "text" : "password"}
-                      className="h-9 md:h-10 border-gray-200 bg-white rounded-md focus:ring-0 focus:border-gray-300 transition-all font-medium pr-10 text-xs"
+                      className="h-9 md:h-10 border-gray-200 bg-white rounded-md focus:ring-0 focus:border-gray-300 transition-all font-medium pr-10 text-xs shadow-none"
                     />
                     <button
                       type="button"
@@ -100,7 +100,7 @@ export default function LoginPage() {
                   </div>
                 </div>
 
-                <Button className="w-full h-9 md:h-10 bg-[#18181b] hover:bg-black text-white rounded-md font-bold text-xs transition-all shadow-sm mt-1">
+                <Button className="w-full h-9 md:h-10 bg-[#18181b] hover:bg-black text-white rounded-md font-bold text-xs transition-all shadow-none mt-1">
                   Login
                 </Button>
               </form>

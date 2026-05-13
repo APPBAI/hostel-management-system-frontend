@@ -145,12 +145,12 @@ export default function FinancePage() {
         <div className="flex items-center gap-3">
           <Button
             variant="outline"
-            className="h-10 border-gray-100 bg-white shadow-sm text-gray-600 font-bold text-xs px-4 rounded-xl"
+            className="h-10 border-gray-100 bg-white shadow-none text-gray-600 font-bold text-xs px-4 rounded-md"
           >
             <Download className="mr-2 size-4" />
             Export Report
           </Button>
-          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-md font-bold text-xs px-4 rounded-xl">
+          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-none font-bold text-xs px-4 rounded-md">
             <Receipt className="mr-2 size-4" />
             Generate Invoice
           </Button>
@@ -162,7 +162,7 @@ export default function FinancePage() {
         {financeStats.map((stat) => (
           <Card
             key={stat.title}
-            className="border-gray-100 shadow-none border rounded-xl bg-white overflow-hidden"
+            className="border-gray-100 shadow-none border rounded-md bg-white overflow-hidden"
           >
             <div className="p-6 pb-2">
               <CardTitle className="text-[9px] font-extrabold text-gray-400 uppercase tracking-[0.2em] mb-4">
@@ -207,7 +207,7 @@ export default function FinancePage() {
       </div>
 
       {/* Collection Progress Chart */}
-      <Card className="border-gray-100 shadow-none rounded-2xl border bg-white overflow-hidden">
+      <Card className="border-gray-100 shadow-none rounded-md border bg-white overflow-hidden">
         <CardHeader className="px-8 pt-8 pb-0">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
@@ -257,7 +257,7 @@ export default function FinancePage() {
                 <Tooltip
                   cursor={{ fill: "#f9fafb" }}
                   contentStyle={{
-                    borderRadius: "12px",
+                    borderRadius: "4px",
                     border: "none",
                     boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
                   }}
@@ -289,27 +289,27 @@ export default function FinancePage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-300" />
               <Input
                 placeholder="Search by Resident"
-                className="pl-10 h-10 border-gray-100 bg-white shadow-sm rounded-xl text-xs font-medium focus:ring-0 focus:border-gray-200"
+                className="pl-10 h-10 border-gray-100 bg-white shadow-none rounded-md text-xs font-medium focus:ring-0 focus:border-gray-200"
               />
             </div>
             <Button
               variant="outline"
-              className="h-10 border-gray-100 bg-white shadow-sm rounded-xl px-4 text-xs font-bold text-gray-600"
+              className="h-10 border-gray-100 bg-white shadow-none rounded-md px-4 text-xs font-bold text-gray-600"
             >
               Status <ChevronDown className="ml-2 size-3" />
             </Button>
           </div>
           <Button
             variant="outline"
-            className="h-10 border-gray-100 bg-white shadow-sm rounded-xl px-4 text-xs font-bold text-gray-600"
+            className="h-10 border-gray-100 bg-white shadow-none rounded-md px-4 text-xs font-bold text-gray-600"
           >
             View
           </Button>
         </div>
 
-        <div className="border border-gray-100 rounded-2xl bg-white overflow-hidden shadow-sm">
+        <div className="border border-gray-100 rounded-none bg-white overflow-hidden shadow-none">
           <Table>
-            <TableHeader className="bg-gray-50/50">
+            <TableHeader className="bg-[#78787833]">
               <TableRow className="border-gray-100 hover:bg-transparent">
                 <TableHead className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-6 h-12">
                   Resident
@@ -391,15 +391,15 @@ export default function FinancePage() {
                       />
                       <DropdownMenuContent
                         align="end"
-                        className="rounded-xl border-gray-100"
+                        className="rounded-md border-gray-100"
                       >
-                        <DropdownMenuItem className="text-xs font-bold rounded-lg">
+                        <DropdownMenuItem className="text-xs font-bold rounded-sm">
                           View Invoice
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-xs font-bold rounded-lg">
+                        <DropdownMenuItem className="text-xs font-bold rounded-sm">
                           Record Payment
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-xs font-bold rounded-lg">
+                        <DropdownMenuItem className="text-xs font-bold rounded-sm">
                           Send Reminder
                         </DropdownMenuItem>
                       </DropdownMenuContent>
@@ -417,7 +417,7 @@ export default function FinancePage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-lg"
+                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-md"
                 disabled
               >
                 Previous
@@ -425,7 +425,7 @@ export default function FinancePage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-lg"
+                className="h-8 border-gray-100 text-[10px] font-bold px-3 rounded-md"
               >
                 Next
               </Button>

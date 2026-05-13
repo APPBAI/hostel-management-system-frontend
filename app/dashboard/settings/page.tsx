@@ -49,7 +49,7 @@ export default function SettingsPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-md font-bold text-xs px-6 rounded-xl transition-all">
+          <Button className="h-10 bg-[#18181b] hover:bg-black text-white shadow-none font-bold text-xs px-6 rounded-md transition-all">
             <Save className="mr-2 size-4" />
             Save Changes
           </Button>
@@ -64,9 +64,9 @@ export default function SettingsPage() {
               key={tab.id}
               variant="ghost"
               onClick={() => setActiveTab(tab.id)}
-              className={`w-full justify-start h-12 rounded-xl px-4 text-xs font-bold transition-all ${
+              className={`w-full justify-start h-12 rounded-md px-4 text-xs font-bold transition-all ${
                 activeTab === tab.id
-                  ? "bg-gray-100 text-gray-900 shadow-sm"
+                  ? "bg-gray-100 text-gray-900 shadow-none"
                   : "text-gray-400 hover:text-gray-900 hover:bg-gray-50"
               }`}
             >
@@ -80,7 +80,7 @@ export default function SettingsPage() {
 
         {/* Settings Content */}
         <div className="lg:col-span-9">
-          <Card className="border-gray-100 shadow-none rounded-3xl border bg-white overflow-hidden">
+          <Card className="border-gray-100 shadow-none rounded-md border bg-white overflow-hidden">
             <CardHeader className="px-8 pt-8 border-b border-gray-50 bg-gray-50/30">
               <CardTitle className="text-lg font-bold text-gray-900">
                 {settingsTabs.find((t) => t.id === activeTab)?.label}
@@ -99,7 +99,7 @@ export default function SettingsPage() {
                       </Label>
                       <Input
                         defaultValue="Emmanuel"
-                        className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium"
+                        className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none"
                       />
                     </div>
                     <div className="space-y-2">
@@ -108,7 +108,7 @@ export default function SettingsPage() {
                       </Label>
                       <Input
                         defaultValue="m@example.com"
-                        className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium"
+                        className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none"
                       />
                     </div>
                   </div>
@@ -119,7 +119,7 @@ export default function SettingsPage() {
                     <Input
                       value="System Administrator"
                       disabled
-                      className="h-11 border-gray-100 bg-gray-50 text-gray-400 rounded-xl text-xs font-bold uppercase tracking-wider"
+                      className="h-11 border-gray-100 bg-gray-50 text-gray-400 rounded-md text-xs font-bold uppercase tracking-wider shadow-none"
                     />
                   </div>
                 </div>
@@ -143,7 +143,7 @@ export default function SettingsPage() {
                   ].map((item) => (
                     <div
                       key={item.title}
-                      className="flex items-center justify-between p-4 rounded-2xl border border-gray-50 bg-gray-50/20"
+                      className="flex items-center justify-between p-4 rounded-md border border-gray-50 bg-gray-50/20"
                     >
                       <div className="space-y-1">
                         <p className="text-sm font-bold text-gray-900">
@@ -166,7 +166,7 @@ export default function SettingsPage() {
                       <ShieldCheck className="size-4 text-gray-400" />
                       Two-Factor Authentication
                     </h3>
-                    <div className="p-4 rounded-2xl border border-gray-100 bg-gray-50/30 flex items-center justify-between">
+                    <div className="p-4 rounded-md border border-gray-100 bg-gray-50/30 flex items-center justify-between">
                       <p className="text-[11px] text-gray-400 font-medium max-w-sm">
                         Add an extra layer of security to your account by
                         requiring a verification code in addition to your
@@ -174,7 +174,7 @@ export default function SettingsPage() {
                       </p>
                       <Button
                         variant="outline"
-                        className="h-9 border-gray-100 rounded-lg text-[10px] font-black uppercase tracking-widest"
+                        className="h-9 border-gray-100 rounded-md text-[10px] font-black uppercase tracking-widest shadow-none"
                       >
                         Enable 2FA
                       </Button>
@@ -188,12 +188,12 @@ export default function SettingsPage() {
                       <Input
                         type="password"
                         placeholder="Current Password"
-                        className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium"
+                        className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none"
                       />
                       <Input
                         type="password"
                         placeholder="New Password"
-                        className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium"
+                        className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none"
                       />
                     </div>
                   </div>
@@ -208,10 +208,10 @@ export default function SettingsPage() {
                         Portal Language
                       </Label>
                       <Select defaultValue="en">
-                        <SelectTrigger className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium">
+                        <SelectTrigger className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent className="rounded-xl border-gray-100">
+                        <SelectContent className="rounded-md border-gray-100 shadow-none">
                           <SelectItem value="en">English (US)</SelectItem>
                           <SelectItem value="gh">English (GH)</SelectItem>
                         </SelectContent>
@@ -222,10 +222,10 @@ export default function SettingsPage() {
                         Timezone
                       </Label>
                       <Select defaultValue="gmt">
-                        <SelectTrigger className="h-11 border-gray-100 bg-white rounded-xl text-xs font-medium">
+                        <SelectTrigger className="h-11 border-gray-100 bg-white rounded-md text-xs font-medium shadow-none">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent className="rounded-xl border-gray-100">
+                        <SelectContent className="rounded-md border-gray-100 shadow-none">
                           <SelectItem value="gmt">GMT +0 (Accra)</SelectItem>
                           <SelectItem value="utc">UTC +0</SelectItem>
                         </SelectContent>
