@@ -6,14 +6,15 @@ import {
   BadgeCheck,
   Download,
   ExternalLink,
-  MessageSquare,
   MoreVertical,
   Phone,
   Plus,
   Search,
 } from "lucide-react";
+import Link from "next/link";
 import * as React from "react";
 
+import { MessageResidentDrawer } from "@/components/MessageResidentDrawer";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -271,17 +272,15 @@ export default function ResidentsPage() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="h-8 border-gray-100 rounded-md text-[9px] font-black text-gray-600 px-3 hover:bg-gray-50 shadow-none"
-                  >
-                    <MessageSquare className="mr-1.5 size-3 text-gray-400" />
-                    Message
-                  </Button>
-                  <Button className="h-8 bg-black hover:bg-black/90 text-white rounded-md text-[9px] font-black px-4 shadow-none transition-all">
-                    View Profile
-                  </Button>
+                  <MessageResidentDrawer
+                    residentId={resident.id}
+                    residentName={resident.name}
+                  />
+                  <Link href={`/dashboard/residents/${resident.id}`}>
+                    <Button className="h-8 bg-black hover:bg-black/90 text-white rounded-md text-[9px] font-black px-4 shadow-none transition-all">
+                      View Profile
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </CardContent>

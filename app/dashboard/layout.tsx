@@ -18,8 +18,10 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Toaster } from "@/components/ui/sonner";
 import { Bell, PanelLeft, Search } from "lucide-react";
 import { usePathname } from "next/navigation";
+import React from "react";
 
 export default function DashboardLayout({
   children,
@@ -28,8 +30,7 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
 
-  const getPageTitle = (path: string) => {
-    const segment = path.split("/").pop() || "";
+  const getPageTitle = (segment: string) => {
     switch (segment) {
       case "dashboard":
         return "Dashboard";
@@ -58,7 +59,14 @@ export default function DashboardLayout({
     }
   };
 
-  const pageTitle = getPageTitle(pathname);
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const isDashboardRoute = pathSegments[0] === "dashboard";
+  const relevantSegments = isDashboardRoute
+    ? pathSegments.slice(1)
+    : pathSegments;
+
+  if (relevantSegments.length === 0) relevantSegments.push("dashboard");
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -72,18 +80,38 @@ export default function DashboardLayout({
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink
-                    href="#"
+                    href="/dashboard"
                     className="text-[11px] font-bold text-gray-400 uppercase tracking-tight"
                   >
                     APPBAI HMS Portal
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block text-gray-300" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage className="text-[11px] text-gray-900 font-black uppercase tracking-tight">
-                    {pageTitle}
-                  </BreadcrumbPage>
-                </BreadcrumbItem>
+
+                {relevantSegments.map((segment, index) => {
+                  const isLast = index === relevantSegments.length - 1;
+                  const title = getPageTitle(segment);
+                  const href = `/dashboard/${relevantSegments.slice(0, index + 1).join("/")}`;
+
+                  return (
+                    <React.Fragment key={segment}>
+                      <BreadcrumbSeparator className="hidden md:block text-gray-300" />
+                      <BreadcrumbItem>
+                        {isLast ? (
+                          <BreadcrumbPage className="text-[11px] text-gray-900 font-black uppercase tracking-tight">
+                            {title}
+                          </BreadcrumbPage>
+                        ) : (
+                          <BreadcrumbLink
+                            href={href}
+                            className="hidden md:block text-[11px] font-bold text-gray-400 uppercase tracking-tight"
+                          >
+                            {title}
+                          </BreadcrumbLink>
+                        )}
+                      </BreadcrumbItem>
+                    </React.Fragment>
+                  );
+                })}
               </BreadcrumbList>
             </Breadcrumb>
           </div>
@@ -118,6 +146,7 @@ export default function DashboardLayout({
           {children}
         </main>
       </SidebarInset>
+      <Toaster position="top-right" />
     </SidebarProvider>
   );
 }
